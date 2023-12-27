@@ -1,0 +1,7 @@
+.modal {
+  display: none;
+  // Other styling for the modal...
+  &.show {
+    display: block;
+  }
+}

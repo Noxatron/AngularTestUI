@@ -1,0 +1,76 @@
+<div class="container mt-5">
+    <!-- Section Heading -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Applications</h2>
+        <!-- Create New Button with Icon -->
+        <button type="button" class="btn btn-primary" (click)="showCreatePopup()">
+            <i class="fa fa-plus-circle"></i> Create New
+        </button>
+    </div>
+
+    <!-- Responsive Table -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Creation Date</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let app of applications">
+                    <td>{{ app.guid }}</td>
+                    <td>{{ app.date | date: 'MM/dd/yyyy, h:mm a' }}</td>
+                    <td>{{ getTypeDescription(app.type) }}</td>
+                    <td>
+                        <!-- Conditional Status Display -->
+                        {{ app.status === 0 ? 'Submitted' : 'Completed' }}
+                    </td>
+                    <td>{{ app.message }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="modal" [class.show]="isCreatePopupVisible">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">New Application</h5>
+          <button type="button" class="close" aria-label="Close" (click)="closeCreatePopup()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="submitNewApplication()">
+
+            <div class="form-group">
+              <label for="type">Type:</label>
+              <select class="form-control" id="type" [(ngModel)]="newApplication.type" name="type">
+                <option value="0">Request</option>
+                <option value="1">Complaint</option>
+                <option value="2">Suggestion</option>
+              </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <input type="text" class="form-control" id="message" placeholder="Enter message" [(ngModel)]="newApplication.message" name="message">
+              </div>
+            <!-- Other fields... -->
+            <div class="d-flex justify-content-center mt-3">
+              <button type="submit" class="btn btn-success">
+                <i class="fa fa-paper-plane"></i> Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
