@@ -4,10 +4,8 @@ import { Router, RouterModule } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup,FormsModule,ReactiveFormsModule,Validators } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { AuthService } from '../services/auth.service';
-interface User{
-  username:string,
-  password:string
-}
+import { User } from '../../interfaces/user';
+
 @Component({
   selector: 'app-login',
   standalone: true,
