@@ -52,7 +52,7 @@ export class ApplicationlistComponent implements OnInit{
   }
   private refreshApplications(): void {
     this.api.getApplications().subscribe((data: Application[]) => {
-      console.log(data)
+      console.debug(data)
       this.applications = data;
     }, error => {
       console.error('Error fetching applications', error);
@@ -64,7 +64,7 @@ export class ApplicationlistComponent implements OnInit{
   submitNewApplication():void{
     this.api.createApplication(this.newApplication).subscribe(
       success => {
-        console.log("success");
+        console.debug("success");
         //this.refreshApplications();
         this.closeCreatePopup();
       }, error => {

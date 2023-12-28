@@ -20,7 +20,7 @@ export class WebSocketService {
   private connect(): void {
 
     this.webSocket.onopen = (event) => {
-      console.log('WebSocket connection established:', event);
+      console.debug('WebSocket connection established:', event);
     };
 
     this.webSocket.onmessage = (event) => {
@@ -32,7 +32,7 @@ export class WebSocketService {
     };
 
     this.webSocket.onclose = (event) => {
-      console.log('WebSocket connection closed:', event);
+      console.debug('WebSocket connection closed:', event);
     };
   }
 
